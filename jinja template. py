@@ -1,0 +1,67 @@
+
+
+Sure! Here's a quick cheatsheet of Jinja template syntax used in Flask's `render_template` function:
+
+**Rendering variables:**
+
+```html+jinja
+<p>{{ variable }}</p>
+```
+
+**Conditional statements:**
+
+```html+jinja
+{% if condition %}
+  <p>The condition is true.</p>
+{% else %}
+  <p>The condition is false.</p>
+{% endif %}
+```
+
+**Loops:**
+
+```html+jinja
+{% for item in iterable %}
+  <p>{{ item }}</p>
+{% endfor %}
+```
+
+**Template inheritance:**
+
+```html+jinja
+{% extends "base.html" %}
+
+{% block content %}
+  <p>This is the content of the child template.</p>
+{% endblock %}
+```
+
+**Include other templates:**
+
+```html+jinja
+{% include "header.html" %}
+
+<p>This is the content of the page.</p>
+
+{% include "footer.html" %}
+```
+
+**Passing arguments to templates:**
+
+```python
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    variable = "Hello, world!"
+    return render_template('index.html', variable=variable)
+```
+
+```html+jinja
+<p>{{ variable }}</p>
+```
+
+In the above example, the variable `"Hello, world!"` is passed to the template `index.html` 
+as the `variable` argument. You can access this variable in the template using `{{ variable }}`.
