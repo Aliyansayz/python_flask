@@ -43,7 +43,7 @@ Here's how the code works:
 
 To display the count of active sessions in real-time on the client side, you can use a JavaScript SocketIO client that emits the `'get_active_sessions'` event and listens for the `'active_sessions_count'` event. Here's an example of how you might do this:
 """
-```html
+html
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,7 +62,7 @@ To display the count of active sessions in real-time on the client side, you can
     <p>Active sessions: <span id="active-sessions-count">0</span></p>
 </body>
 </html>
-```
+
 """
 
 This HTML file includes the SocketIO client library and sets up a connection to the server. 
