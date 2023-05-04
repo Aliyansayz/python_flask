@@ -76,4 +76,7 @@ ALTER TABLE table_name ADD COLUMN column_name datatype;
 DROP TABLE table_name;
 ```
 
-These are some of the most commonly used SQL statements that you may need to use in your Python Flask backend development work. Remember to always use parameterized queries to prevent SQL injection attacks, and to test your queries thoroughly before deploying them to production.
+These are some of the most commonly used SQL statements that 
+you may need to use in your Python Flask backend development work. 
+Remember to always use parameterized queries to prevent SQL injection attacks, 
+and to test your queries thoroughly before deploying them to production.
