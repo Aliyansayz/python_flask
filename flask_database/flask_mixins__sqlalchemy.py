@@ -19,7 +19,7 @@ class MyForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired()])
     phone = StringField('Phone Number', validators=[Optional()])
-    password = PasswordField('Password', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=6, max=255)])
     submit = SubmitField('Submit')
 
 class User(db.Model):
