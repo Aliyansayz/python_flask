@@ -15,6 +15,13 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 app.config['SECRET_KEY'] = 'secret-key'
 db = SQLAlchemy(app)
 
+class MyForm(FlaskForm):
+    name = StringField('Name', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired()])
+    phone = StringField('Phone Number', validators=[Optional()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
 class User(db.Model):
     __tablename__ = 'users_data'
     id = db.Column(db.Integer, primary_key=True)
