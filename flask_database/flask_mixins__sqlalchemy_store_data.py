@@ -57,5 +57,4 @@ def add_user():
             return redirect(url_for('add_user'))
         else:
             flash('Form validation failed!', 'error')
-    return view.get()
 
