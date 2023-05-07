@@ -58,3 +58,38 @@ def add_user():
         else:
             flash('Form validation failed!', 'error')
 
+"""
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<h1>My Form</h1>
+<form method="POST">
+    {{ form.csrf_token }}
+    <div>
+        {{ form.name.label }}
+        {{ form.name() }}
+    </div>
+    <div>
+        {{ form.email.label }}
+        {{ form.email() }}
+    </div>
+    <div>
+        {{ form.phone.label }}
+        {{ form.phone() }}
+    </div>
+    <div>
+        {{ form.password.label }}
+        {{ form.password() }}
+    </div>
+    {{ form.submit() }}
+</form>
+
+
+"""
