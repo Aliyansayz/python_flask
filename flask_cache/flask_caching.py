@@ -32,7 +32,8 @@ Here's how you can implement caching in your Flask application using Flask-Cachi
 
    The `@cache.cached()` decorator caches the output of the view function for a certain amount of time (in seconds), 
     specified by the `timeout` argument. 
-    If the view is called again within the cache timeout period, the cached output is returned instead of executing the view function again.
+    If the view is called again within the cache timeout period, 
+   the cached output is returned instead of executing the view function again.
 
    You can also use other caching decorators provided by Flask-Caching, 
   such as `@cache.memoize()` and `@cache.cached_view()`, depending on your caching needs.
