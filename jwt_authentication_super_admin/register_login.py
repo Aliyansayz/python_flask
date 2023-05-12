@@ -18,6 +18,22 @@ from werkzeug.security import generate_password_hash
 from app import app, db
 from models import User, SuperAdmin
 
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(50), unique=True, nullable=False)
+    name = db.Column(db.String(50), unique=True, nullable=False)
+    username = db.Column(db.String(50), unique=True, nullable=False)
+    password = db.Column(db.String(50), nullable=False)
+
+    @classmethod
+    def find_by_username(cls, username):
+        return cls.query.filter_by(username=username).first()
+
+    @classmethod
+    def find_by_id(cls, id):
+        return cls.query.get(id)
+
+
 # Set JWT_SECRET_KEY using secret_key from super_admin table or generate new one
 try:
     super_admin = SuperAdmin.query.first()
@@ -74,7 +90,19 @@ def register():
     secret_key = Register.add_user(email, username, name, password)
 
     return jsonify({'secret_key': secret_key}), 201
+  
     
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.json.get('username')
+    password = request.json.get('password')
+
+    user = User.find_by_username(username)
+    if not user or not check_password_hash(user.password, password):
+        return jsonify({'message': 'Invalid credentials'}), 401
+
+    access_token = create_access_token(identity=user.id)
+    return jsonify({'access_token': access_token}), 200
 
 Here's how this implementation works:
 
