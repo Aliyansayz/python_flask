@@ -11,12 +11,21 @@ app.config['JWT_SECRET_KEY'] = try: fetch secret key from super_admin column sec
 
 Here's an implementation of the register route with the required functionalities:
 
-
+from flask_jwt_extended import JWTManager
+from flask_sqlalchemy import SQLAlchemy
 import secrets
 from flask import request, jsonify
 from werkzeug.security import generate_password_hash
 from app import app, db
 from models import User, SuperAdmin
+
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////path/to/database.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+jwt = JWTManager(app)
+db = SQLAlchemy(app)
+
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
