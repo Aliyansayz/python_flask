@@ -37,7 +37,7 @@ class Product(db.Model):
             self.quantity = quantity
         db.session.commit()
 
-    @classmethod
+
     def delete(cls, product_id):
         product = cls.query.get(product_id)
         if not product:
